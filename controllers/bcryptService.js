@@ -17,8 +17,7 @@ module.exports = {
             })
         });
 
-        const hashReturn = await bcryptPromise;
-        return hashReturn;
+        return await bcryptPromise;
     },
 
     comparePassword: async function(hashedPassword, plaintext_password) {
@@ -34,7 +33,6 @@ module.exports = {
             })
         });
 
-        const resultReturn = await bcryptPromise;
-        return resultReturn;
+        return await bcryptPromise;
     }
 }
