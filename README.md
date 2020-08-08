@@ -7,6 +7,7 @@ A load balanced nodejs template for all use cases with authentication
 2. IP - Hosting IP address
 3. MongoURI - Link to mongoDB
 4. Environment - dev or prod
+5. saltRounds - for bcrypt
 
 # Key requirements
 
