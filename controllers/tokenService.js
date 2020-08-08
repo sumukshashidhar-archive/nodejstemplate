@@ -1,8 +1,13 @@
 const jwt = require("jsonwebtoken")
+const fs = require("fs")
+const path = require("path")
+
+const publicKeyPath = path.join(__dirname, './../keys/private.key');
+const privateKeyPath = path.join(__dirname, './../keys/public.key');
 
 // key imports
-const publicKEY = fs.readFileSync("./../keys/public.key", "utf-8")
-const privateKEY = fs.readFileSync("./../keys/private.key", "utf-8")
+const publicKEY = fs.readFileSync(publicKeyPath, "utf-8")
+const privateKEY = fs.readFileSync(privateKeyPath, "utf-8")
 
 // options
 const jENV = require("./../config/tokenOptions")

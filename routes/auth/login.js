@@ -1,5 +1,5 @@
 const loginController = require("../../controllers/loginService")
-
+const tokenController = require("./../../controllers/tokenService")
 module.exports = function(app) {
 
     app.get('/login', function(req, res) {
@@ -15,6 +15,8 @@ module.exports = function(app) {
             //this means that all validation was successful
             // have to figure out the JWT after this
             console.info("User: ", response["user"].email, " has logged in")
+            let token = await tokenController.signing(response["user"].email)
+            res.cookie("token", token)
         }
         else if(response["status"] === 403) {
             //user exists, but wrong password
