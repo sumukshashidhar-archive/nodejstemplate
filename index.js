@@ -1,7 +1,7 @@
 // Imports
 var express = require("express"); 
-var mongoose = require("mongoose")
-var bodyParser = require("body-parser")
+var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 
 //env vars
 require('dotenv').config()
@@ -28,11 +28,3 @@ mongoose.connect(process.env.mongoURI, {
     useCreateIndex: true}) //Changed this line to link to a database file instead of having everything in one file to provide quick and easy access for further work
     .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
-
-app.get('/', function(req, res) {
-	console.log("Hit the homepage"); 
-	res.json({
-		"status":200, 
-		"message":"OK"
-	})
-})
