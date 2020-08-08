@@ -1,13 +1,12 @@
 module.exports  = {
-    saltRounds: 9, 
-    issuer: 'Ledger', 
+    issuer: "Template",
     signOptions: {
-        issuer:  "Ledger",
+        issuer:  "Template",
         expiresIn:  "24h",
         algorithm:  "RS512"
     },
     verifyOptions: {
-        issuer:  "Ledger",
+        issuer:  "Template",
         expiresIn:  "24h",
         algorithm:  ["RS512"]
        }

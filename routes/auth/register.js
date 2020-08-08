@@ -1,7 +1,7 @@
 module.exports = function(app) {
 
     app.get('/register', function(req, res) {
-        res.render('register')
+        res.render('auth/register')
     })
 
 

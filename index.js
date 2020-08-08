@@ -18,10 +18,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 //routes file
-require('./routes/basic')(app);
-require('./routes/login')(app); // login
-require('./routes/register')(app); // register
-require('./routes/api/v1/test')(app); //testing api route
+require('./routes')(app);
 
 app.listen(process.env.PORT||8080, process.env.IP || "0.0.0.0", function (req, res) {
 	console.info("Server Started")
