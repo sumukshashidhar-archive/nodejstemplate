@@ -7,3 +7,7 @@ A load balanced nodejs template for all use cases with authentication
 2. IP - Hosting IP address
 3. MongoURI - Link to mongoDB
 4. Environment - dev or prod
+
+# Key requirements
+
+Add a public.key and a private.key file in the keys directory
