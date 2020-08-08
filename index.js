@@ -25,16 +25,17 @@ const logger = winston.createLogger({
 	),
 	transports: [
 	  new winston.transports.Console(),
-	  new winston.transports.File({ filename: 'combined.log'})
+	  new winston.transports.File({ filename: String(process.env.NODE_ENV) +'.log'})
 	], 
 	level:"info"
   });
 
 
 //routes file
-require('./routes')(app);
-require('./routes/login')(app); //login
-require('./routes/register')(app);
+require('./routes/basic')(app);
+require('./routes/login')(app); // login
+require('./routes/register')(app); // register
+require('./routes/api/v1/test')(app); //testing api route
 
 app.listen(process.env.PORT||8080, process.env.IP || "0.0.0.0", function (req, res) {
 	logger.info("Server Started.")

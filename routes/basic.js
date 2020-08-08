@@ -6,11 +6,5 @@ module.exports = function(app) {
 			"status":200, 
 			"message":"OK"
 		})
-	}), 
-	app.get('/api/v1', function(req, res) {
-		res.json({
-			"status":200, 
-			"message":"API ONLINE"
-		})
 	})
 }
