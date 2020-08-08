@@ -2,8 +2,10 @@
 var express = require("express"); 
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+const winston = require('winston');
 
-//env vars
+
+// Getting ENV vars
 require('dotenv').config()
 
 
@@ -14,17 +16,33 @@ app.use(express.static("styles"));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+//creating the logger
+const logger = winston.createLogger({
+	format: winston.format.combine(
+		winston.format.timestamp(),
+		winston.format.json()
+	),
+	transports: [
+	  new winston.transports.Console(),
+	  new winston.transports.File({ filename: 'combined.log'})
+	], 
+	level:"info"
+  });
+
+
 //routes file
 require('./routes')(app);
-
+require('./routes/login')(app); //login
+require('./routes/register')(app);
 
 app.listen(process.env.PORT||8080, process.env.IP || "0.0.0.0", function (req, res) {
-	console.log("Server Started.");
+	logger.info("Server Started.")
 })
 
 mongoose.connect(process.env.mongoURI, {
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
-    useCreateIndex: true}) //Changed this line to link to a database file instead of having everything in one file to provide quick and easy access for further work
-    .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+    useCreateIndex: true})
+    .then(() => logger.info('MongoDB Connected...'))
+  .catch(err => logger.error(err));
