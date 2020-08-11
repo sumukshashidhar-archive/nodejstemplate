@@ -3,7 +3,7 @@ const user = require("./../models/user")
 module.exports = {
 
     enumUsers: async function() {
-        const enumPromise = new Promise((res, rej) => {
+        return new Promise((res, rej) => {
             user.find({}, async function(err, obj) {
                 if(err) {
                     console.error(err)
@@ -15,6 +15,5 @@ module.exports = {
                 }
             })
         })
-        return await enumPromise
     }
 }

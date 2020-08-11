@@ -3,7 +3,7 @@ const user = require("./../models/user")
 module.exports = {
 
     login: async function(email, password) {
-        let loginPromise = new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             if(email && password) {
                 // then run a mongo query for those users
                 user.findOne({email:email}, async function(err, obj) {
@@ -34,7 +34,5 @@ module.exports = {
                 resolve({"status":500})
             }
         })
-        return await loginPromise
-
     }
 }

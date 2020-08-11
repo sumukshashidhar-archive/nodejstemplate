@@ -3,25 +3,23 @@ const user = require("./../models/user")
 module.exports = {
 
     checkUser: async function(email) {
-        const checkUserPromise = new Promise(function(res, rej) {
+        return new Promise((resolve, reject) => {
             user.findOne({email:email}, async function(err, obj) {
                 if(err) {
                     console.error(err)
+                    reject(err)
                 }
                 else {
                     if(obj) {
                         console.log(obj)
-                        res(false);
+                        resolve(false);
                     }
                     else {
                         console.log(obj)
-                        res(true);
+                        resolve(true);
                     }
                 }
             })
         })
-        let returnValue = await checkUserPromise;
-        return returnValue;
-
     }
 }

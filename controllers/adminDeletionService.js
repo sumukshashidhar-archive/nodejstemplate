@@ -3,7 +3,7 @@ const user = require("./../models/user")
 module.exports = {
 
     dropUsers: async function() {
-        const dropPromise = new Promise((res, rej) => {
+        return new Promise((res, rej) => {
             user.deleteMany({}, async function(err, obj) {
                 if(err) {
                     console.error(err)
@@ -15,7 +15,5 @@ module.exports = {
                 }
             })
         })
-        return await dropPromise
-
     }
 }

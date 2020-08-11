@@ -22,7 +22,7 @@ module.exports = {
         
         var newUser = new User({
             email: email, 
-            password: password, 
+            password: hashedPassword, 
             role: role
         })
 

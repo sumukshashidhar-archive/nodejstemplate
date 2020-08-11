@@ -3,8 +3,7 @@ const hashing = require("./bcryptService")
 const conflict = require("./conflictCheckService")
 module.exports = {
     makeUser: async function(email, password, role) {
-        // first make a promise
-        const madeUserPromise = new Promise(async (resolve, reject) => {
+        return new Promise((resolve, reject) => {
             // then check if the user already exists using a function
             const isExisting = await conflict.checkUser(email);
             if(isExisting) {
@@ -34,6 +33,5 @@ module.exports = {
                 resolve(false)
             }
         })
-        return await madeUserPromise
     }
 }
